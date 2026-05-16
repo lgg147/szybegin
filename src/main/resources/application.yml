@@ -1,0 +1,71 @@
+server:
+  port: 8081
+# DataSource Config
+spring:
+  datasource:
+    dynamic:
+      primary: gcdd
+      strict: true
+      datasource:
+        gcdd:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/gcdd?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+          username: root
+          password: szylizuoqi
+        jcxx:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/jcxx?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+          username: root
+          password: szylizuoqi
+        yjxx:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/yjxx?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+          username: root
+          password: szylizuoqi
+        collector:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/collector?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+          username: root
+          password: szylizuoqi
+        eb_database:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.32.100:3306/eb_database?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+  redis:
+    host: localhost
+    port: 6380
+    password: 123456
+    database: 1
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 1
+        time-between-eviction-runs: 10s
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+config:
+  jwt:
+    header: Authorization
+    expire: 604800 #7天，秒单位
+    secret: ji8n3439n439n43ld9ne9343fdfer49h
+#阿里云OSS
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    accessKeyId: [REMOVED]
+    accessKeySecret: [REMOVED]
+    bucketName: hmleadnewsduochirou
+tencent:
+  secretId: [REMOVED]
+  secretKey: [REMOVED]
+  sms:
+    signName: 黄晓辉CHN公众号
+    appId: 1400671230
+    appKey: [REMOVED]
+    template:
+      newMDataInfoSmsId: 1613465
+upload:
+  path: D:/tencent/szy_project/photo/
+
