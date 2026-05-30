@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SzyApplication<szy>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.szy.SzyApplication",
+            "projectName": "szy",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

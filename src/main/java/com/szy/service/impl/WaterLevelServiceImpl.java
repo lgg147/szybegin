@@ -167,25 +167,29 @@ public class WaterLevelServiceImpl extends ServiceImpl<WaterLevelMapper, WaterLe
 
     @Override
     public void syncLevelData() {
-        // 查询最新的水位监测记录
-        WaterLevelCollector collector = waterLevelCollectorMapper.selectLastRecord();
-        if (collector != null) {
-            WaterLevel waterLevel = new WaterLevel();
-            // 设置特定的属性值
-            waterLevel.setPosition(RESERVIOR);
-            waterLevel.setCode(collector.getMpCd());
-            waterLevel.setValue(collector.getMpZ());
-            waterLevel.setMonitorTime(collector.getTm());
-            // 插入水位数据
-            try {
-                waterLevelMapper.insert(waterLevel);
-                log.info("已获取最新的水位数据");
-            } catch (Exception e) {
-                // 处理插入失败的情况，例如违反唯一索引约束
-                log.error("未获取到最新的水位数据", e);
-            }
-        } else {
+        // 查询最新的水位监测记录（按 MP_CD 分组取最新）
+        List<WaterLevelCollector> collectorList = waterLevelCollectorMapper.selectLastRecord();
+        if (collectorList.isEmpty()) {
             log.info("暂无水位数据");
+            return;
+        }
+        for (WaterLevelCollector collector : collectorList) {
+            if (collector != null && collector.getMpZ() != null) {
+                WaterLevel waterLevel = new WaterLevel();
+                // 设置特定的属性值
+                waterLevel.setPosition(RESERVIOR);
+                waterLevel.setCode(collector.getMpCd());
+                waterLevel.setValue(collector.getMpZ());
+                waterLevel.setMonitorTime(collector.getTm());
+                // 插入水位数据
+                try {
+                    waterLevelMapper.insert(waterLevel);
+                    log.info("已获取水位站 {} 最新的水位数据", collector.getMpCd());
+                } catch (Exception e) {
+                    // 处理插入失败的情况，例如违反唯一索引约束
+                    log.error("未获取水位站 {} 最新的水位数据: {}", collector.getMpCd(), e.getMessage());
+                }
+            }
         }
     }
 

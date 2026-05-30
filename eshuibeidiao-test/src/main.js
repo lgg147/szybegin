@@ -29,7 +29,7 @@ Vue.use(ElementUI);
 
 Vue.component('downloadExcel', JsonExcel)
 //配置请求的根路径
-axios.defaults.baseURL = 'http://111.47.99.130:8081' //后端ip关防火墙
+axios.defaults.baseURL = 'http://111.47.99.130:8081'
 //配置请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.interceptors.request.use(config => {

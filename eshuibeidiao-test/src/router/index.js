@@ -78,6 +78,8 @@ import WaterQuality from '@/components/menu/VideoSurveilance/WaterQuality.vue'
 import WaterQualityRead from '@/components/menu/VideoSurveilance/WaterQualityRead.vue'
 import AppDownload from '@/components/menu/ResourceDownload/AppDownload.vue'
 import ShouyeWeihu from '@/components/menu/SystemServe/ShouyeWeihu.vue'
+import DeviceMonitor from '@/components/menu/SystemServe/DeviceMonitor.vue'
+import DeviceFaultHistory from '@/components/menu/SystemServe/DeviceFaultHistory.vue'
 
 Vue.use(Router)
 
@@ -161,7 +163,9 @@ const router = new Router({
         { path: 'departmentmanage', component: DepartmentManage },
         { path: 'departmentmanageread', component: DepartmentManageRead },
         { path: 'appdownload', component: AppDownload },
-        { path: 'shouyeweihu', component: ShouyeWeihu }
+        { path: 'shouyeweihu', component: ShouyeWeihu },
+        { path: 'devicemonitor', component: DeviceMonitor },
+        { path: 'devicefault', component: DeviceFaultHistory }
       ]
     },
     // 路由重定位
