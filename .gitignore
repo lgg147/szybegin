@@ -4,3 +4,7 @@
 /.vscode
 /面试题库
 *.sql
+.idea/
+.vscode/
+application-local.yml
+*.zip

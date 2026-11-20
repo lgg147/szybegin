@@ -2,6 +2,8 @@ server:
   port: 8081
 # DataSource Config
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
   datasource:
     dynamic:
       primary: gcdd
@@ -54,16 +56,16 @@ config:
 aliyun:
   oss:
     endpoint: https://oss-cn-beijing.aliyuncs.com
-    accessKeyId: [REMOVED]
-    accessKeySecret: [REMOVED]
+    accessKeyId: ${ALIYUN_OSS_ACCESS_KEY_ID:}
+    accessKeySecret: ${ALIYUN_OSS_ACCESS_KEY_SECRET:}
     bucketName: hmleadnewsduochirou
 tencent:
-  secretId: [REMOVED]
-  secretKey: [REMOVED]
+  secretId: ${TENCENT_SECRET_ID:}
+  secretKey: ${TENCENT_SECRET_KEY:}
   sms:
     signName: 黄晓辉CHN公众号
     appId: 1400671230
-    appKey: [REMOVED]
+    appKey: ${TENCENT_SMS_APP_KEY:}
     template:
       newMDataInfoSmsId: 1613465
 upload:
